@@ -40,7 +40,19 @@ class PageController extends Controller
 
     public function contact()
     {
-        return view('pages.contact');
+       return view('pages.contact');
+    }
+
+    public function storeFeedback(Request $request)
+    {
+        $name = request('name');
+        $email = request('email');
+        $msg = request('msg');
+        return view('pages.feedback',[
+            'fname'=>$name,
+            'femail'=>$email,
+            'fmsg'=>$msg
+        ]);
     }
 
     public function team()

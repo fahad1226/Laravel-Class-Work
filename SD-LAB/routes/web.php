@@ -21,3 +21,4 @@ Route::get('home','PageController@home');
 Route::get('about','PageController@about');
 Route::get('contact','PageController@contact');
 Route::get('team','PageController@team');
+Route::get('get-feedback','PageController@storeFeedback');

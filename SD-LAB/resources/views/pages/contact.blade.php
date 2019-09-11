@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text-primary">Contact Us</h2>
     <h3>send us email</h3>
-    <form class="form-group" action="">
+    <form class="form-group" action="/get-feedback">
         <label for="name">Your Name?</label>
         <input placeholder="Name" type="text" name="name" class="form-control">
         <label for="email">Your Email?</label>
@@ -11,5 +11,6 @@
         <label for="msg">Your Message?</label>
         <textarea class="form-control" name="msg" id="" cols="30" rows="10"></textarea>
         <button class="btn btn-primary btn-block">send</button>
+        @csrf
     </form>
 @endsection
