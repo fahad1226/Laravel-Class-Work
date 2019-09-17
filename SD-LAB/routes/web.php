@@ -22,3 +22,9 @@ Route::get('about','PageController@about');
 Route::get('contact','PageController@contact');
 Route::get('team','PageController@team');
 Route::get('get-feedback','PageController@storeFeedback');
+
+//Database
+
+Route::get('list','PageController@list');
+Route::get('create','PageController@create');
+Route::post('store','PageController@store');

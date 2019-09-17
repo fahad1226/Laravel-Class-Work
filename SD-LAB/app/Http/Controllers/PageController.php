@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customer;
 
 class PageController extends Controller
 {
@@ -66,5 +67,30 @@ class PageController extends Controller
         return view('pages.team',[
             'team_members'=>$team_member,
         ]);
+    }
+
+   
+
+    public function create()
+    {
+        return view('pages.create');
+    }
+
+    public function store(Request $req)
+    {
+        $cs = new Customer();
+        $cs->name = $req->name;
+        $cs->email = $req->email;
+        $cs->uni_id = $req->id;
+        $cs->country = $req->country;
+        $cs->university = $req->university;
+        $cs->city = $req->city;
+        $cs->save();
+        return redirect('list');
+    }
+    public function list()
+    {
+        $customers = Customer::all();
+        return view('pages.list',compact('customers'));
     }
 }
