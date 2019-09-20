@@ -81,7 +81,7 @@ class PageController extends Controller
         $cs = new Customer();
         $cs->name = $req->name;
         $cs->email = $req->email;
-        $cs->uni_id = $req->id;
+        $cs->uni_id = $req->uni_id;
         $cs->country = $req->country;
         $cs->university = $req->university;
         $cs->city = $req->city;
@@ -93,4 +93,32 @@ class PageController extends Controller
         $customers = Customer::all();
         return view('pages.list',compact('customers'));
     }
+    public function edit($id)
+    {
+        $customers = Customer::find($id);
+        return view('pages.edit',compact('customers'));
+    }
+
+
+    public function update(Request $req,$id)
+    {
+        $cs = Customer::find($id);
+        $cs->name = $req->name;
+        $cs->email = $req->email;
+        $cs->uni_id = $req->uni_id;
+        $cs->country = $req->country;
+        $cs->university = $req->university;
+        $cs->city = $req->city;
+        $cs->save();
+        return redirect('list')->with('message','successfully updated');
+    }
+
+
+    public function destroy($id)
+    {
+        $customers = Customer::find($id);
+        $customers ->delete();
+        return redirect('list')->with('message','Customer Deleted');
+    }
+
 }
