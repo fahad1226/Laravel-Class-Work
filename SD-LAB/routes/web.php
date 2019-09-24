@@ -30,4 +30,4 @@ Route::get('create','PageController@create');
 Route::post('store','PageController@store');
 Route::get('edit/{id}','PageController@edit')->name('edit');
 Route::patch('update/{id}','PageController@update');
-Route::get('delete/{id}','PageController@destroy');
+Route::get('delete/{id}','PageController@destroy')->name('customer.delete');
