@@ -31,3 +31,13 @@ Route::post('store','PageController@store');
 Route::get('edit/{id}','PageController@edit')->name('edit');
 Route::patch('update/{id}','PageController@update');
 Route::get('delete/{id}','PageController@destroy')->name('customer.delete');
+
+
+Route::get('login', 'AuthController@login');
+Route::post('loginstore','AuthController@loginstore');
+
+Route::group(['middleware' => 'checkloggedin'], function(){
+    // YOUR ROUTES HERE
+    Route::get('dashboard','AuthController@dashboard');
+    Route::get('logout', 'AuthController@logout');
+});

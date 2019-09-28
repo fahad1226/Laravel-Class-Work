@@ -11,14 +11,21 @@ class CustomersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Customer::class,300)->create();
-        // DB::table('customers')->insert([
-        //     'name' => Str::random(10),
-        //     'email' => Str::random(10).'@gmail.com',
-        //     'uni_id' => rand(1,10),
-        //     'country'=>'Bangladesh',
-        //     'university'=>Str::random(20),
-        //     'city'=>Str::random(20)
-        // ]);
+        factory(App\Customer::class,10)->create();
+        
     }
 }
+
+
+
+
+//  write for single data,which not that useful --
+/* DB::table('customers')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@gmail.com',
+            'uni_id' => rand(1,10),
+            'country'=>'Bangladesh',
+            'university'=>Str::random(20),
+            'city'=>Str::random(20)
+        ]);
+*/
