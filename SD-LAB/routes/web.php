@@ -40,4 +40,18 @@ Route::group(['middleware' => 'checkloggedin'], function(){
     // YOUR ROUTES HERE
     Route::get('dashboard','AuthController@dashboard');
     Route::get('logout', 'AuthController@logout');
+
+    Route::group(['middleware' => 'isTeacher'], function(){
+        Route::get('teacher1', 'AuthController@teacher1');
+        Route::get('teacher2', 'AuthController@teacher2');
+        Route::get('teacher3', 'AuthController@teacher3');
+    });
+    Route::group(['middleware' => 'isStudent'], function(){
+        Route::get('student1', 'AuthController@student1');
+        Route::get('student2', 'AuthController@student2');
+        Route::get('student3', 'AuthController@student3');
+    });
+
 });
+
+

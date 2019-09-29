@@ -44,4 +44,26 @@ class AuthController extends Controller
         Session::flush();
         return redirect()->to('login');
     }
+
+    public function teacher1(){
+        echo 'Teacher 1';
+    }
+
+    public function teacher2(){
+        echo 'Teacher 2';
+    }
+    public function teacher3(){
+        echo 'Teacher 3';
+    }
+
+    public function student1(){
+        echo 'Student 1';
+    }
+
+    public function student2(){
+        echo 'Student 2';
+    }
+    public function student3(){
+        echo 'Student 3';
+    }
 }
