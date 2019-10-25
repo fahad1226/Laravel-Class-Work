@@ -32,10 +32,12 @@ Route::get('edit/{id}','PageController@edit')->name('edit');
 Route::patch('update/{id}','PageController@update');
 Route::get('delete/{id}','PageController@destroy')->name('customer.delete');
 
-
+//login
 Route::get('login', 'AuthController@login');
 Route::post('loginstore','AuthController@loginstore');
 
+
+//middleware
 Route::group(['middleware' => 'checkloggedin'], function(){
     // YOUR ROUTES HERE
     Route::get('dashboard','AuthController@dashboard');
@@ -54,4 +56,41 @@ Route::group(['middleware' => 'checkloggedin'], function(){
 
 });
 
+
+//Image Uploading --> single image
+
+
+Route::get('create_image','ImageController@create');
+Route::post('store_image','ImageController@store');
+Route::get('show_image','ImageController@show');
+
+
+
+//Image Uploading --> multiple
+
+Route::get('create_images','MultipleImageController@create_images');
+Route::post('store_images','MultipleImageController@store_images');
+Route::get('multiple_images','MultipleImageController@show');
+
+
+//excell
+
+Route::post('import','PageController@import');
+
+//pdf
+
+
+Route::get('showpdf','PdfController@showform');
+Route::post('storepdf','PdfController@storepdf');
+Route::get('showinfo/{id}','PdfController@showinfo');
+
+
+Route::get('invoice',function(){
+   
+    return view('invoice');
+});
+
+
+
+Route::get('pdfdownload/{id}','PdfController@download');
 

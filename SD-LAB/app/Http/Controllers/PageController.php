@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use Excel;
+
+use App\Imports\CustomerImport;
+
+
 
 class PageController extends Controller
 {
@@ -88,15 +93,30 @@ class PageController extends Controller
         $cs->save();
         return redirect('list');
     }
+
+
     public function list()
     {
         $customers = Customer::all();
         return view('pages.list',compact('customers'));
     }
+
+    
     public function edit($id)
     {
         $customers = Customer::find($id);
         return view('pages.edit',compact('customers'));
+    }
+
+    public function import(Request $request)
+        {
+            $this->validate($request, [
+            'select_file'  => 'required|mimes:xls,xlsx'
+            ]);
+            Excel::import(new CustomerImport,request()->file('select_file'));
+
+            return back()->with('success', 'Excel Data Imported successfully.');
+        
     }
 
 
